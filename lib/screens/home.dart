@@ -77,8 +77,41 @@ class _HomeState extends State<Home> {
         itemBuilder: (BuildContext context, int index) {
           Children child = _childrenList[index];
           return Container(
-            padding: EdgeInsets.symmetric(horizontal: 4, vertical: 10),
-            child: Column
+            padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 10),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 6),
+                      child: Row(
+                        children: [
+                          Container(
+                            width: 38,
+                            height: 38,
+                            decoration: BoxDecoration(
+                              image: child.image != null ? DecorationImage(image: NetworkImage('${child.image}')) : null,
+                              borderRadius: BorderRadius.circular(25),
+                              color: Colors.amber
+                            ),
+                          ),
+                          const SizedBox(width: 10,),
+                          Text(
+                            '${child.nombre} ${child.apellidoPaterno}',
+                            style: const TextStyle(
+                              fontWeight: FontWeight.w600,
+                              fontSize: 17
+                            ),
+                          )
+                        ],
+                      ),
+                    )
+                  ],
+                )
+              ],
+            )
           );
         }
       )
